@@ -1,0 +1,7 @@
+.container,
+.row {
+  &::before,
+  &::after {
+    display: none;
+  }
+}

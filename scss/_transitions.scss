@@ -1,0 +1,68 @@
+.slide-in-right-leave-active,
+.slide-in-right-enter-active {
+  transition: all 0.5s ease;
+}
+
+.slide-in-right-enter-from {
+  transform: translate(100%, 0);
+  opacity: 0;
+}
+
+.slide-in-right-enter-to {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.slide-in-right-leave-from {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.slide-in-right-leave-to {
+  transform: translate(100%, 0);
+  opacity: 0;
+}
+
+.slide-in-bottom-leave-active,
+.slide-in-bottom-enter-active {
+  transition: all 0.5s ease;
+}
+
+.slide-in-bottom-enter-from {
+  transform: translate(0, 100%);
+  opacity: 0;
+}
+
+.slide-in-bottom-enter-to {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.slide-in-bottom-leave-from {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.slide-in-bottom-leave-to {
+  transform: translate(0, 100%);
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
+
+.vue-transitioning {
+  overflow: hidden;
+}
