@@ -77,7 +77,7 @@ module.exports = (env) => {
               </head>
               <body>
                   <div class="container">
-                      <div id="mnrw-orca-lti-root"></div>
+                      <div id="orca-lti-root"></div>
                       <input name="${
                         options.selected_tool_url_field_name
                       }" type="hidden" value="">
