@@ -1,7 +1,7 @@
 <template>
   <div class="orcalti orca-ci">
     {{ selectedItem.name }}
-    <button v-show="!error" @click.prevent="toggleModal" class="btn btn-primary" type="button">
+    <button v-show="!error" @click.prevent="toggleModal" class="btn btn-primary" type="button" :tabindex="showModal ? -1 : 0">
       {{ $t(LOCALIZATION_KEYS.BUTTON_SELECT) }}
     </button>
     <div v-show="error">
