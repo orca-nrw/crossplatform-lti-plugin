@@ -8,7 +8,7 @@
         <div class="slide-up-container d-flex">
           <Transition name="slide-up">
             <div>
-              <div class="line-clamp my-2" v-show="!detailsActive" :aria-hidden="detailsActive" ref="el">
+              <div class="line-clamp my-2 text-break" v-show="!detailsActive" :aria-hidden="detailsActive" ref="el">
                 {{ item.description }}
               </div>
               <div v-show="detailsActive" :aria-hidden="!detailsActive">
