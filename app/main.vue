@@ -1,8 +1,9 @@
 <template>
   <div class="orcalti orca-ci">
     {{ selectedItem.name }}
-    <button v-show="!error" @click.prevent="toggleModal" class="btn btn-primary" type="button" :tabindex="showModal ? -1 : 0">
-      {{ $t(LOCALIZATION_KEYS.BUTTON_SELECT) }}
+    <button v-show="!error" @click.prevent="toggleModal" class="btn btn-primary" type="button" :tabindex="showModal ? -1 : 0"
+      aria-label="Öffnet Modalbox, in der ein Inhalt zum Einbinden gewählt werden kann. Links befinden sich Kategorien zum Durchsuchen, rechts eine Suchleiste und die verfügbaren Inhalte.">
+      {{ $t(LOCALIZATION_KEYS.BUTTON_SELECT) }} <!-- TODO: auslagern! -->
     </button>
     <div v-show="error">
       {{ $t(LOCALIZATION_KEYS.ERROR) }} ( {{ error }} )
@@ -13,7 +14,7 @@
           <div class="row flex-fill mh-100">
             <div class="col-xl-3 col-lg-4 col-2 d-flex flex-column flex-fill mh-100">
               <div class="orca-nav-bar d-flex flex-column flex-fill mh-100" :class="{ 'flyout-active': showFlyout }">
-                <a class="d-lg-none orca-nav-bar-menu mt-4" @click.prevent="showFlyout = !showFlyout">
+                <a class="d-lg-none orca-nav-bar-menu mt-4" @click.prevent="showFlyout = !showFlyout" type="button" tabindex="1">
                   <div class="d-flex flex-column align-items-center p-2">
                     <img class="img-fluid w-50" src="@/img/navigation-menu-horizontal.png" />
                     {{ $t(LOCALIZATION_KEYS.OPEN_CATEGORY_MENU) }}
@@ -26,14 +27,14 @@
                         :title="$t(LOCALIZATION_KEYS.ORCA_LINK_TITLE)" class="orca-logo w-50">
                         <img class="img-fluid" :alt="$t(LOCALIZATION_KEYS.ORCA_LOGO_ALT)" src="@/img/orca_logo.png" />
                       </a>
-                      <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" type="button"
+                      <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" type="button" tabindex="0"
                         class="orca-close-categories d-lg-none">
                         <img src="@/img/close_btn.png" />
                       </a>
                     </div>
                   </div>
                   <div class="d-flex ps-3 py-3">
-                    <h3>{{ $t(LOCALIZATION_KEYS.CATEGORIES) }}</h3>
+                    <h3 tabindex="0">{{ $t(LOCALIZATION_KEYS.CATEGORIES) }}</h3>
                   </div>
                   <nav class="d-flex flex-column flex-fill orca-overflow-accordion mn-3" tabindex="-1">
                     <accordion-navigation :navItems="preparedOrcaCategories" :selected="selected" :level="0"
@@ -42,13 +43,13 @@
                   <div class="d-flex flex-column ps-3 py-4">
                     <div class="orca-contact">
                       {{ $t(LOCALIZATION_KEYS.CONTACT) }}:
-                      <a :href="`mailto: ${$t(
-                        LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA
-                      )}`" :title="$t(LOCALIZATION_KEYS.SEND_SUPPORT_REQUEST)">{{
-    $t(LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA)
-}}</a>
+                      <a :href="`mailto: ${$t(LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA)}`"
+                        :aria-label="$t(LOCALIZATION_KEYS.SEND_SUPPORT_REQUEST)">
+                        {{$t(LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA)}}
+                      </a>
                     </div>
                   </div>
+                  <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" type="button" tabindex="0"></a>
                 </div>
               </div>
             </div>
@@ -277,6 +278,12 @@ const count = computed(() => {
     background-color: $color-orca-grey;
     text-decoration: none;
     cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0);
+    display: inline-flex;
+
+    &:focus-visible {
+      border: 1px solid $color-orca-red;
+    }
   }
 
   @include media-breakpoint-down(lg) {

@@ -6,7 +6,7 @@
         <li tabindex="0" @click.prevent="select(item, level)" :class="{ collapsed: !isSelected(item), active : isActive(item)  }"
           :style="navItemLevelStyle" class="nav-item" :id="`accordion-header-${item.id}`" role="button"
           :aria-expanded="isSelected(item) ? true : false" :aria-controls="`accordion-body-${item.id}`">
-          <div class="pe-5 position-relative">
+          <div class="pe-5 position-relative" aria-label="Oberkategorie">
             {{ item.name }}
             <div v-if="hasChilds(item)" v-html="getSVG(item)" class="up-down-arrow"></div>
           </div>
