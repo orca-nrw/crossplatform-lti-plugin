@@ -4,13 +4,14 @@
       <div class="container">
 
         <div ref="content" class="modal-content shadow rounded">
-          <span class="orca-close-modal" @click="$emit('close')"></span>
+          <span class="orca-close-modal" @click="$emit('close')" role="button" tabindex="1"></span>
           <slot name="content"></slot>
           <div v-if="showControls" class="modal-controls">
             <slot name="controls"></slot>
           </div>
         </div>
-      </div>
+        <span @click="$emit('close')" role="button" tabindex="0"></span>
+      </div>  
     </div>
   </Transition>
 </template>

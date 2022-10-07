@@ -1,6 +1,6 @@
 <template>
   <nav class="d-flex align-items-center breadcrumb-nav" aria-label="breadcrumb">
-    <div v-if="!disableBreadcrumbText" class="align-items-center me-2 breadcrumb-text">
+    <div v-if="!disableBreadcrumbText" class="align-items-center me-2 breadcrumb-text" tabindex="0">
       {{ $t(breadcrumbText) }}
     </div>
     <ol class="breadcrumb m-0">
@@ -15,7 +15,7 @@
           </a>
         </template>
         <template v-else>
-          {{ item.name }}
+          <span tabindex="0">{{ item.name }}</span>
         </template>
       </li>
     </ol>

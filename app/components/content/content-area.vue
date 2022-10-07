@@ -20,12 +20,12 @@
       @update:navigation="navigationChange"
     ></contentitem>
     <template v-if="!hasResults && searchString">
-      <div class="orca-no-content-found">
+      <div class="orca-no-content-found" tabindex="0">
         {{$t(LOCALIZATION_KEYS.SEARCH_NO_CONTENT_FOUND)}} "{{searchString}}".
       </div>
     </template>
     <template v-if="!hasResults && !searchString">
-      <div class="orca-no-content-found">
+      <div class="orca-no-content-found" tabindex="0">
         {{$t(LOCALIZATION_KEYS.NO_SEARCH_NO_CONTENT_FOUND)}}
       </div>
     </template>
