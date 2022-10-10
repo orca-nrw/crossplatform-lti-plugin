@@ -21,7 +21,7 @@ const init = (tools, categories, translations, options, error) => {
     orcaCategories: parsedCategories,
     preparedOrcaCategories: preparedCategories,
     orcaOptions: parsedOptions,
-    error:error
+    error: error,
   });
 
   const rootId = `#${parsedOptions.root_id}`;
