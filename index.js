@@ -28,7 +28,7 @@ const init = () => {
     orcaCategories: parsedCategories,
     preparedOrcaCategories: preparedCategories,
     orcaOptions: parsedOptions,
-    error:error
+    error: error,
   });
 
   const rootId = `#${parsedOptions.root_id}`;

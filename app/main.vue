@@ -15,7 +15,8 @@
               <div class="orca-nav-bar d-flex flex-column flex-fill mh-100" :class="{ 'flyout-active': showFlyout }">
                 <a class="d-lg-none orca-nav-bar-menu mt-4" @click.prevent="showFlyout = !showFlyout">
                   <div class="d-flex flex-column align-items-center p-2">
-                    <img class="img-fluid w-50" src="@/img/navigation-menu-horizontal.png" />
+                    <img class="img-fluid w-50"
+                      :src="loadAssetByURL(require('@/img/navigation-menu-horizontal.png'))" />
                     {{ $t(LOCALIZATION_KEYS.OPEN_CATEGORY_MENU) }}
                   </div>
                 </a>
@@ -24,11 +25,12 @@
                     <div class="pe-5 position-relative">
                       <a :href="$t(LOCALIZATION_KEYS.WEBSITE_URL_ORCA)" target="_blank"
                         :title="$t(LOCALIZATION_KEYS.ORCA_LINK_TITLE)" class="orca-logo w-50">
-                        <img class="img-fluid" :alt="$t(LOCALIZATION_KEYS.ORCA_LOGO_ALT)" src="@/img/orca_logo.png" />
+                        <img class="img-fluid" :alt="$t(LOCALIZATION_KEYS.ORCA_LOGO_ALT)"
+                          :src="loadAssetByURL(require('@/img/orca_logo.png'))" />
                       </a>
                       <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" type="button"
                         class="orca-close-categories d-lg-none">
-                        <img src="@/img/close_btn.png" />
+                        <img :src="loadAssetByURL(require('@/img/close_btn.png'))" />
                       </a>
                     </div>
                   </div>
@@ -45,8 +47,8 @@
                       <a :href="`mailto: ${$t(
                         LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA
                       )}`" :title="$t(LOCALIZATION_KEYS.SEND_SUPPORT_REQUEST)">{{
-    $t(LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA)
-}}</a>
+                      $t(LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA)
+                      }}</a>
                     </div>
                   </div>
                 </div>
@@ -82,7 +84,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, inject, computed } from "vue";
+import { ref, reactive, inject, computed, provide } from "vue";
 import { useI18n } from "vue-i18n";
 import modalFullscreen from "@/app/components/modal/modal-fullscreen";
 import bsPagination from "@/app/components/pagination/bs-pagination.vue";
@@ -258,6 +260,20 @@ const pages = computed(() => {
 const count = computed(() => {
   return filteredContent.value.length;
 });
+
+const loadAssetByURL = (url) => {
+  let assetBase = props.orcaOptions.asset_base;
+
+  if (assetBase && assetBase !== null && assetBase !== "") {
+    url = `${assetBase}${url}`;
+  }
+
+  return url;
+}
+
+provide('assetPath', {
+  loadAssetByURL
+})
 </script>
 
 <style lang="scss">
