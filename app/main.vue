@@ -14,7 +14,7 @@
           <div class="row flex-fill mh-100">
             <div class="col-xl-3 col-lg-4 col-2 d-flex flex-column flex-fill mh-100">
               <div class="orca-nav-bar d-flex flex-column flex-fill mh-100" :class="{ 'flyout-active': showFlyout }">
-                <a class="d-lg-none orca-nav-bar-menu mt-4" @click.prevent="showFlyout = !showFlyout" type="button" tabindex="1">
+                <a class="d-lg-none orca-nav-bar-menu mt-4" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout" type="button" tabindex="1">
                   <div class="d-flex flex-column align-items-center p-2">
                     <img class="img-fluid w-50" src="@/img/navigation-menu-horizontal.png" />
                     {{ $t(LOCALIZATION_KEYS.OPEN_CATEGORY_MENU) }}
@@ -27,7 +27,7 @@
                         :title="$t(LOCALIZATION_KEYS.ORCA_LINK_TITLE)" class="orca-logo w-50">
                         <img class="img-fluid" :alt="$t(LOCALIZATION_KEYS.ORCA_LOGO_ALT)" src="@/img/orca_logo.png" />
                       </a>
-                      <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" type="button" tabindex="0"
+                      <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout" type="button" tabindex="0"
                         class="orca-close-categories d-lg-none">
                         <img src="@/img/close_btn.png" />
                       </a>
@@ -48,8 +48,8 @@
                         {{$t(LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA)}}
                       </a>
                     </div>
-                  </div>
-                  <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" type="button" tabindex="0"></a>
+                  </div> <!-- TODO Beschreibung Sprungmarke -->
+                  <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout" type="button" tabindex="0"></a>
                 </div>
               </div>
             </div>

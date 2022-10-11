@@ -3,7 +3,7 @@
     <template v-for="item of navItems" :key="item.id">
       <template v-if="hasChilds(item)">
 
-        <li tabindex="0" @click.prevent="select(item, level)" :class="{ collapsed: !isSelected(item), active : isActive(item)  }"
+        <li tabindex="0" @click.prevent="select(item, level)" @keyup.enter="select(item, level)" :class="{ collapsed: !isSelected(item), active : isActive(item)  }"
           :style="navItemLevelStyle" class="nav-item" :id="`accordion-header-${item.id}`" role="button"
           :aria-expanded="isSelected(item) ? true : false" :aria-controls="`accordion-body-${item.id}`">
           <div class="pe-5 position-relative" aria-label="Oberkategorie">
@@ -20,7 +20,7 @@
         </li>
       </template>
       <template v-else>
-        <li role="button" tabindex="0" @click.prevent="select(item, level)" class="nav-item"
+        <li role="button" tabindex="0" @click.prevent="select(item, level)" @keyup.enter="select(item, level)" class="nav-item"
           :class="{ active: isSelected(item) }" :style="navItemLevelStyle">
           {{ item.name }}
         </li>

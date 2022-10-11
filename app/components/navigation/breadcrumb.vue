@@ -7,10 +7,10 @@
       <li v-for="(item, index) in navItems" :key="item?.id" class="breadcrumb-item align-items-center"
         :aria-current="!linkedItem(index) ? 'page' : false">
         <template v-if="linkedItem(index)">
-          <a v-if="item && !fullLinked" @click.prevent="selected(item, index)" role="button" tabindex="0">
+          <a v-if="item && !fullLinked" @click.prevent="selected(item, index)" @keyup.enter="selected(item)" role="button" tabindex="0">
             {{ item.name }}
           </a>
-          <a v-if="item && fullLinked" @click.prevent="navigationChange(item)" role="button" tabindex="0">
+          <a v-if="item && fullLinked" @click.prevent="navigationChange(item)" @keyup.enter="navigationChange(item)" role="button" tabindex="0">
             {{ item.name }}
           </a>
         </template>
