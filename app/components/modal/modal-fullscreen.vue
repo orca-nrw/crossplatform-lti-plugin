@@ -4,13 +4,13 @@
       <div class="container">
 
         <div ref="content" class="modal-content shadow rounded">
-          <span class="orca-close-modal" @click="$emit('close')" @keyup.enter="$emit('close')" role="button" tabindex="1"></span>
+          <span class="orca-close-modal" @click="$emit('close')" @keyup.enter="$emit('close')" role="button" tabindex="1" :title="$t(LOCALIZATION_KEYS.MODAL_CLOSE)"></span>
           <slot name="content"></slot>
           <div v-if="showControls" class="modal-controls">
             <slot name="controls"></slot>
           </div>
         </div>
-        <span @click="$emit('close')" @keyup.enter="$emit('close')" role="button" tabindex="0"></span> <!-- TODO Beschreibung Sprungmarke -->
+        <span class="sr-only" @click="$emit('close')" @keyup.enter="$emit('close')" role="button" tabindex="0" :title="$t(LOCALIZATION_KEYS.MODAL_CLOSE)"></span>
       </div>
     </div>
   </Transition>
@@ -81,6 +81,14 @@ const showControls = computed(() => {
 
       }
     }
+    .sr-only {
+      position:absolute;
+      left:-10000px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+}
   }
 
   display: flex;

@@ -1,7 +1,7 @@
 <template>
   <div class="input-group orca-content-search">
     <span></span>
-    <input :placeholder="$t(LOCALIZATION_KEYS.INPUT_SEARCH_PLACEHOLDER)" type="text"
+    <input :placeholder="$t(LOCALIZATION_KEYS.INPUT_SEARCH_PLACEHOLDER)" type="text" autocomplete="off"
       class="form-control orca-search-input" :id="$t(LOCALIZATION_KEYS.INPUT_SEARCH_ID)"
       :aria-label="$t(LOCALIZATION_KEYS.INPUT_SEARCH_PLACEHOLDER)" v-model="searchString" />
   </div>

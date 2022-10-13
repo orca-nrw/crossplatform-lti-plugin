@@ -28,7 +28,7 @@
                         <img class="img-fluid" :alt="$t(LOCALIZATION_KEYS.ORCA_LOGO_ALT)" src="@/img/orca_logo.png" />
                       </a>
                       <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout" type="button" tabindex="0"
-                        class="orca-close-categories d-lg-none">
+                        class="orca-close-categories d-lg-none" :title="$t(LOCALIZATION_KEYS.MODAL_CLOSE)">
                         <img src="@/img/close_btn.png" />
                       </a>
                     </div>
@@ -55,7 +55,7 @@
             </div>
             <div class="col-xl-9 col-lg-8 col-10 d-flex flex-column flex-fill mh-100 pt-4">
               <div class="pe-5 pe-lg-4 ps-2">
-                <form role="search">
+                <form role="search" @submit.prevent>
                   <div class="d-flex pe-2 pe-md-0">
                     <bs-search :modelValue="searchString" @update:modelValue="changeInput"></bs-search>
                   </div>
