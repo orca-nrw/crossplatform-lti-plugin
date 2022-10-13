@@ -4,7 +4,8 @@
       <div class="container">
 
         <div ref="content" class="modal-content shadow rounded">
-          <span class="orca-close-modal" @click="$emit('close')"></span>
+          <span class="orca-close-modal" @click="$emit('close')"
+            :style="{backgroundImage: `url(${loadAssetByURL(require('@/img/times.png'))})`}"></span>
           <slot name="content"></slot>
           <div v-if="showControls" class="modal-controls">
             <slot name="controls"></slot>
@@ -16,12 +17,14 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed, useSlots } from "vue";
+import { ref, onMounted, onUnmounted, computed, useSlots, inject } from "vue";
 import LOCALIZATION_KEYS from "@/app/localization/localization-keys";
 
 const emit = defineEmits(["close"]);
 
 const content = ref(null);
+
+const { loadAssetByURL } = inject('assetPath');
 
 onMounted(() => {
   document.addEventListener("keyup", handleKeyInput);
@@ -70,14 +73,13 @@ const showControls = computed(() => {
       top: 0;
       right: 0;
       transform: translate(50%, -50%);
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 40px;
+      height: 40px;
 
       @include media-breakpoint-down(lg) {
         transform: translate(0, 0);
-      }
-
-      &::before {
-        content: url(../../../img/times.png);
-
       }
     }
   }
