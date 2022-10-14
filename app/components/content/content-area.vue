@@ -11,6 +11,7 @@
     "
     tabindex="-1"
   >
+    <div class="mb-2 text-muted"><i>{{props.content.length}} Inhalte werden angezeigt.</i></div>
     <contentitem
       v-for="item in content"
       :navItems="findAllSubCategoryRec(item.category, [])"
