@@ -3,8 +3,8 @@
     <span></span>
     <input :placeholder="$t(LOCALIZATION_KEYS.INPUT_SEARCH_PLACEHOLDER)" type="text" autocomplete="off"
       class="form-control orca-search-input" :id="$t(LOCALIZATION_KEYS.INPUT_SEARCH_ID)"
-      :aria-label="$t(LOCALIZATION_KEYS.INPUT_SEARCH_PLACEHOLDER)" v-model="searchString" />
-  </div>
+      :aria-label="$t(LOCALIZATION_KEYS.INPUT_SEARCH_PLACEHOLDER) + ', results update while typing.'" v-model="searchString" />
+  </div> <!-- TODO -->
 </template>
 
 <script setup>

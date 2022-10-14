@@ -32,7 +32,7 @@
             </a>
           </div>
           <div class="col-12 col-sm-4 d-flex justify-content-end orca-select-button">
-            <button @click.prevent="add()" class="btn btn-secondary" role="button" tabindex="0">
+            <button @click.prevent="add()" class="btn btn-secondary" role="button" tabindex="0" :aria-label="item.name + ' einfügen. Schließt Modal.'"> <!-- todo -->
               {{ $t(LOCALIZATION_KEYS.BUTTON_SELECT) }}
             </button>
           </div>

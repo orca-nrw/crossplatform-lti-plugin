@@ -17,7 +17,7 @@
                 <a class="d-lg-none orca-nav-bar-menu mt-4" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout" type="button" tabindex="1">
                   <div class="d-flex flex-column align-items-center p-2">
                     <img class="img-fluid w-50" src="@/img/navigation-menu-horizontal.png" />
-                    {{ $t(LOCALIZATION_KEYS.OPEN_CATEGORY_MENU) }}
+                    {{ $t(LOCALIZATION_KEYS.OPEN_CATEGORY_MENU) }} <!-- TODO -->
                   </div>
                 </a>
                 <div class="orca-nav-bar-flyout flex-column flex-fill mh-100">
@@ -28,7 +28,7 @@
                         <img class="img-fluid" :alt="$t(LOCALIZATION_KEYS.ORCA_LOGO_ALT)" src="@/img/orca_logo.png" />
                       </a>
                       <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout" type="button" tabindex="0"
-                        class="orca-close-categories d-lg-none" :title="$t(LOCALIZATION_KEYS.MODAL_CLOSE)">
+                        class="orca-close-categories d-lg-none" :title="$t(LOCALIZATION_KEYS.CATEGORY_MENU_CLOSE)">  <!-- TODO add -->
                         <img src="@/img/close_btn.png" />
                       </a>
                     </div>
@@ -48,8 +48,10 @@
                         {{$t(LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA)}}
                       </a>
                     </div>
-                  </div> <!-- TODO Beschreibung Sprungmarke -->
-                  <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout" type="button" tabindex="0"></a>
+                  </div>
+                  <a class="sr-only" v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout" type="button" tabindex="0"
+                    >{{$t(LOCALIZATION_KEYS.CATEGORY_MENU_CLOSE)}}
+                  </a> <!-- TODO add-->
                 </div>
               </div>
             </div>
@@ -334,6 +336,14 @@ const count = computed(() => {
       border-radius: 0.25rem;
     }
 
+    .sr-only {
+      position:absolute;
+      left:-10000px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
   }
 
   &.flyout-active {

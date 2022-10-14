@@ -59,10 +59,10 @@ const translations = {
   en: {
     modal_fullscreen_description: "Choose an ORCA-Activity to embed.",
     modal_close: "Close ORCA-Tool",
-    open_category_menu: "MENU",
+    open_category_menu: "Open category sidebar.",
     orca_logo_alt: "Logo ORCA.nrw",
     website_url_orca: "https://www.orca.nrw/",
-    orca_link_title: "To ORCA.nrw",
+    orca_link_title: "To ORCA.nrw, opens in new tab",
     categories: "Categories",
     contact: "Contact us",
     email_address_orca: "support{'@'}orca.nrw",
@@ -80,21 +80,22 @@ const translations = {
     pagination_next: "Next",
     pagination_prev: "Previous",
     error: "An error has occurred. Your administrator can help you.",
+    category_menu_close: "Close category sidebar."
   },
   de: {
     modal_fullscreen_description:
       "Wählen Sie einen ORCA-Inhalt zum Einbinden aus.",
     modal_close: "ORCA-Tool schließen",
-    open_category_menu: "MENÜ",
+    open_category_menu: "Kategorie-Menü öffnen.",
     orca_logo_alt: "Logo ORCA.nrw",
     website_url_orca: "https://www.orca.nrw/",
-    orca_link_title: "Zu ORCA.nrw",
+    orca_link_title: "Zu ORCA.nrw, öffnet in neuem Tab",
     categories: "(Fach-)Kategorien",
     contact: "Kontakt",
     email_address_orca: "support{'@'}orca.nrw",
     send_support_request: "Supportanfrage per E-Mail an ORCA.nrw senden",
     input_search_id: "incremental_search_courses",
-    input_search_placeholder: "Content suchen ",
+    input_search_placeholder: "Content suchen",
     searching_in_all_categories: "Sie suchen in allen (Fach-)Kategorien",
     searching_in_category: "Sie suchen in ",
     search_no_content_found: "Es wurde kein Ergebnis gefunden für ",
@@ -106,6 +107,7 @@ const translations = {
     pagination_next: "Weiter",
     pagination_prev: "Zurück",
     error: "Ein Fehler ist aufgetreten. Ihr Administrator/in kann Ihnen weiter helfen.",
+    category_menu_close: "Kategorie-Menü schließen."
   },
 };
 

@@ -21,7 +21,8 @@ const LOCALIZATION_KEYS = {
   PAGINATION_LABEL: "pagination_label",
   PAGINATION_NEXT: "pagination_next",
   PAGINATION_PREV: "pagination_prev", 
-  ERROR:"error", 
+  ERROR:"error",
+  CATEGORY_MENU_CLOSE: "category_menu_close" 
 };
 
 export default LOCALIZATION_KEYS;
