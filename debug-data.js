@@ -58,6 +58,7 @@ const categories = [
 const translations = {
   en: {
     modal_fullscreen_description: "Choose an ORCA-Activity to embed.",
+    modal_button_aria_description: "Opens a modal where you can pick content to insert. On the left are categories to filter, on the right is a search bar and the available content.",
     modal_close: "Close ORCA-Tool",
     open_category_menu: "Open category sidebar.",
     orca_logo_alt: "Logo ORCA.nrw",
@@ -80,11 +81,14 @@ const translations = {
     pagination_next: "Next",
     pagination_prev: "Previous",
     error: "An error has occurred. Your administrator can help you.",
-    category_menu_close: "Close category sidebar."
+    category_menu_close: "Close category sidebar.",
+    select_course_aria_1: "Select ",
+    select_course_aria_2: " to embed.",
+    input_search_aria: "Results update while typing.",
   },
   de: {
-    modal_fullscreen_description:
-      "Wählen Sie einen ORCA-Inhalt zum Einbinden aus.",
+    modal_fullscreen_description: "Wählen Sie einen ORCA-Inhalt zum Einbinden aus.",
+    modal_button_aria_description: "Öffnet Modalbox, in der ein Inhalt zum Einbinden gewählt werden kann. Links befinden sich Kategorien zum Durchsuchen, rechts eine Suchleiste und die verfügbaren Inhalte.",
     modal_close: "ORCA-Tool schließen",
     open_category_menu: "Kategorie-Menü öffnen.",
     orca_logo_alt: "Logo ORCA.nrw",
@@ -107,7 +111,10 @@ const translations = {
     pagination_next: "Weiter",
     pagination_prev: "Zurück",
     error: "Ein Fehler ist aufgetreten. Ihr Administrator/in kann Ihnen weiter helfen.",
-    category_menu_close: "Kategorie-Menü schließen."
+    category_menu_close: "Kategorie-Menü schließen.",
+    select_course_aria_1: "Inhalt ",
+    select_course_aria_2: " zum Einbinden auswählen.",
+    input_search_aria: "Ergebnisse aktualisieren sich beim tippen.",
   },
 };
 

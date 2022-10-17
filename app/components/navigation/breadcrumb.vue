@@ -3,7 +3,7 @@
     <div v-if="!disableBreadcrumbText" class="align-items-center me-2 breadcrumb-text" tabindex="0">
       {{ $t(breadcrumbText) }}
     </div>
-    <ol class="breadcrumb m-0" :aria-label="disableBreadcrumbText ? 'in' : false"> <!-- TOdo" -->
+    <ol class="breadcrumb m-0">
       <li v-for="(item, index) in navItems" :key="item?.id" class="breadcrumb-item align-items-center"
         :aria-current="!linkedItem(index) ? 'page' : false">
         <template v-if="linkedItem(index)">

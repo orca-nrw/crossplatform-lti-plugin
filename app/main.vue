@@ -2,8 +2,8 @@
   <div class="orcalti orca-ci">
     {{ selectedItem.name }}
     <button v-show="!error" @click.prevent="toggleModal" class="btn btn-primary" type="button" :tabindex="showModal ? -1 : 0"
-      aria-label="Öffnet Modalbox, in der ein Inhalt zum Einbinden gewählt werden kann. Links befinden sich Kategorien zum Durchsuchen, rechts eine Suchleiste und die verfügbaren Inhalte.">
-      {{ $t(LOCALIZATION_KEYS.BUTTON_SELECT) }} <!-- TODO: auslagern! -->
+      :aria-label="$t(LOCALIZATION_KEYS.MODAL_BUTTON_ARIA_DESCRIPTION)">
+      {{ $t(LOCALIZATION_KEYS.BUTTON_SELECT) }}
     </button>
     <div v-show="error">
       {{ $t(LOCALIZATION_KEYS.ERROR) }} ( {{ error }} )
@@ -17,7 +17,7 @@
                 <a class="d-lg-none orca-nav-bar-menu mt-4" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout" type="button" tabindex="1">
                   <div class="d-flex flex-column align-items-center p-2">
                     <img class="img-fluid w-50" src="@/img/navigation-menu-horizontal.png" />
-                    {{ $t(LOCALIZATION_KEYS.OPEN_CATEGORY_MENU) }} <!-- TODO -->
+                    {{ $t(LOCALIZATION_KEYS.OPEN_CATEGORY_MENU) }}
                   </div>
                 </a>
                 <div class="orca-nav-bar-flyout flex-column flex-fill mh-100">
@@ -28,7 +28,7 @@
                         <img class="img-fluid" :alt="$t(LOCALIZATION_KEYS.ORCA_LOGO_ALT)" src="@/img/orca_logo.png" />
                       </a>
                       <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout" type="button" tabindex="0"
-                        class="orca-close-categories d-lg-none" :title="$t(LOCALIZATION_KEYS.CATEGORY_MENU_CLOSE)">  <!-- TODO add -->
+                        class="orca-close-categories d-lg-none" :title="$t(LOCALIZATION_KEYS.CATEGORY_MENU_CLOSE)">
                         <img src="@/img/close_btn.png" />
                       </a>
                     </div>
@@ -51,7 +51,7 @@
                   </div>
                   <a class="sr-only" v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout" type="button" tabindex="0"
                     >{{$t(LOCALIZATION_KEYS.CATEGORY_MENU_CLOSE)}}
-                  </a> <!-- TODO add-->
+                  </a>
                 </div>
               </div>
             </div>
