@@ -3,7 +3,7 @@
     <span :style="{backgroundImage: `url(${loadAssetByURL(require('@/img/magnifier.png'))})`}"></span>
     <input :placeholder="$t(LOCALIZATION_KEYS.INPUT_SEARCH_PLACEHOLDER)" type="text"
       class="form-control orca-search-input" :id="$t(LOCALIZATION_KEYS.INPUT_SEARCH_ID)"
-      :aria-label="$t(LOCALIZATION_KEYS.INPUT_SEARCH_PLACEHOLDER)" v-model="searchString" />
+      :aria-label="$t(LOCALIZATION_KEYS.INPUT_SEARCH_PLACEHOLDER)" v-model="searchString" @keypress.enter.prevent />
   </div>
 </template>
 
