@@ -44,7 +44,7 @@
                   <div class="d-flex flex-column ps-3 py-4">
                     <div class="orca-contact">
                       {{ $t(LOCALIZATION_KEYS.CONTACT) }}:
-                      <a :href="`mailto: ${$t(
+                      <a :href="`mailto:${$t(
                         LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA
                       )}`" :title="$t(LOCALIZATION_KEYS.SEND_SUPPORT_REQUEST)">{{
                       $t(LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA)
