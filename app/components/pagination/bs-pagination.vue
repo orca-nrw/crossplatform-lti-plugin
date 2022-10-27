@@ -68,6 +68,10 @@ const props = defineProps({
 
 const changePage = (val) => {
   emit("update:change", val);
+  const eltewt = document.getElementsByClassName('orca-lti-content-item')[0];
+      if (eltewt) {
+        eltewt.scrollIntoView();
+      }
 };
 
 const getPageItemClass = (index) => {
