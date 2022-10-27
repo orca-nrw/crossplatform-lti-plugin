@@ -24,7 +24,9 @@ const updateLMSFormValues = (
     elToolname.value = selectedItem.name;
   }
 
-  instancename.value = selectedItem.name;
+  if(instancename !== null) {
+    instancename.value = selectedItem.name;
+  }
 
   if (key !== undefined && key !== null) {
     key.value = selectedItem.key;
