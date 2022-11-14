@@ -10,7 +10,7 @@
             <slot name="controls"></slot>
           </div>
         </div>
-        <span class="sr-only" @click="$emit('close')" @keyup.enter="$emit('close')" role="button" tabindex="0" :title="$t(LOCALIZATION_KEYS.MODAL_CLOSE)"></span>
+        <span class="sr-only" @click="$emit('close')" @keyup.enter="$emit('close')" role="button" tabindex="0">{{$t(LOCALIZATION_KEYS.MODAL_CLOSE)}}</span>
       </div>
     </div>
   </Transition>
