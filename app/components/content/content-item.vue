@@ -11,7 +11,7 @@
               <div class="line-clamp my-2 text-break" v-show="!detailsActive" :aria-hidden="detailsActive" ref="el">
                 {{ item.description }}
               </div>
-              <div v-show="detailsActive" :aria-hidden="!detailsActive">
+              <div class="text-break" v-show="detailsActive" :aria-hidden="!detailsActive">
                 {{ item.description }}
               </div>
             </div>
