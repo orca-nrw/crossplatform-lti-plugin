@@ -71,7 +71,7 @@
               </div>
               <div class="d-flex flex-column align-items-center flex-fill overflow-hidden">
                 <content-area :searchString="searchString" :content="contentToShow" :categories="orcaCategories"
-                  @add="changeItem" @update:navigation="navigationChange"></content-area>
+                  @add="changeItem" @update:navigation="navigationChange" ref="contentarea"></content-area>
               </div>
               <div class="d-flex flex-wrap justify-content-center pe-4 ps-2">
                 <bs-pagination v-if="showPagination" :page="page" :pages="pages"
@@ -86,7 +86,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, inject, computed } from "vue";
+import { ref, reactive, inject, computed, provide } from "vue";
 import { useI18n } from "vue-i18n";
 import modalFullscreen from "@/app/components/modal/modal-fullscreen";
 import bsPagination from "@/app/components/pagination/bs-pagination.vue";
@@ -151,6 +151,13 @@ const selectedItem = reactive({ ...initialSelectedItem });
 const { t } = useI18n();
 const selected = ref([]);
 const showFlyout = ref(false);
+const contentarea = ref(null);
+
+const catchKeyDown = () => {
+  console.log(contentarea.value.contentarea);
+  let ca = contentarea.value.contentarea;
+  //contentarea.value.contentarea.focus();
+}
 
 const select = (item, level) => {
   if (selected?.value?.[level]?.id === item.id && !selected.value[level + 1]) {
@@ -262,6 +269,8 @@ const pages = computed(() => {
 const count = computed(() => {
   return filteredContent.value.length;
 });
+
+provide('catchKeyDown', catchKeyDown);
 </script>
 
 <style lang="scss">
