@@ -1,7 +1,8 @@
 <template>
   <div class="orcalti orca-ci">
     {{ selectedItem.name }}
-    <button v-show="!error" @click.prevent="toggleModal" class="btn btn-primary" type="button">
+    <button v-show="!error" @click.prevent="toggleModal" class="btn btn-primary" type="button" :tabindex="showModal ? -1 : 0"
+      :aria-label="$t(LOCALIZATION_KEYS.MODAL_BUTTON_ARIA_DESCRIPTION)">
       {{ $t(LOCALIZATION_KEYS.BUTTON_SELECT) }}
     </button>
     <div v-show="error">
@@ -13,11 +14,12 @@
           <div class="row flex-fill mh-100">
             <div class="col-xl-3 col-lg-4 col-2 d-flex flex-column flex-fill mh-100">
               <div class="orca-nav-bar d-flex flex-column flex-fill mh-100" :class="{ 'flyout-active': showFlyout }">
-                <a class="d-lg-none orca-nav-bar-menu mt-4" @click.prevent="showFlyout = !showFlyout">
+                <a class="d-lg-none orca-nav-bar-menu mt-4" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout"
+                  type="button" :aria-label="$t(LOCALIZATION_KEYS.OPEN_CATEGORY_MENU)" :tabindex="showFlyout ? -1 : 0">
                   <div class="d-flex flex-column align-items-center p-2">
                     <img class="img-fluid w-50"
                       :src="loadAssetByURL(require('@/img/navigation-menu-horizontal.png'))" />
-                    {{ $t(LOCALIZATION_KEYS.OPEN_CATEGORY_MENU) }}
+                    {{ $t(LOCALIZATION_KEYS.OPEN_CATEGORY_TEXT) }}
                   </div>
                 </a>
                 <div class="orca-nav-bar-flyout flex-column flex-fill mh-100">
@@ -30,12 +32,12 @@
                       </a>
                       <a v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" type="button"
                         class="orca-close-categories d-lg-none">
-                        <img :src="loadAssetByURL(require('@/img/close_btn.png'))" />
+                        <img src="@/img/close_btn.png" />
                       </a>
                     </div>
                   </div>
                   <div class="d-flex ps-3 py-3">
-                    <h3>{{ $t(LOCALIZATION_KEYS.CATEGORIES) }}</h3>
+                    <h3 tabindex="0">{{ $t(LOCALIZATION_KEYS.CATEGORIES) }}</h3>
                   </div>
                   <nav class="d-flex flex-column flex-fill orca-overflow-accordion mn-3" tabindex="-1">
                     <accordion-navigation :navItems="preparedOrcaCategories" :selected="selected" :level="0"
@@ -44,19 +46,22 @@
                   <div class="d-flex flex-column ps-3 py-4">
                     <div class="orca-contact">
                       {{ $t(LOCALIZATION_KEYS.CONTACT) }}:
-                      <a :href="`mailto:${$t(
+                      <a :href="`mailto: ${$t(
                         LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA
                       )}`" :title="$t(LOCALIZATION_KEYS.SEND_SUPPORT_REQUEST)">{{
-                      $t(LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA)
-                      }}</a>
+    $t(LOCALIZATION_KEYS.EMAIL_ADDRESS_ORCA)
+}}</a>
                     </div>
                   </div>
+                  <a class="sr-only" v-if="showFlyout" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout" type="button" tabindex="0"
+                    >{{$t(LOCALIZATION_KEYS.CATEGORY_MENU_CLOSE)}}
+                  </a>
                 </div>
               </div>
             </div>
             <div class="col-xl-9 col-lg-8 col-10 d-flex flex-column flex-fill mh-100 pt-4">
               <div class="pe-5 pe-lg-4 ps-2">
-                <form role="search">
+                <form role="search" @submit.prevent>
                   <div class="d-flex pe-2 pe-md-0">
                     <bs-search :modelValue="searchString" @update:modelValue="changeInput"></bs-search>
                   </div>
@@ -69,7 +74,7 @@
               </div>
               <div class="d-flex flex-column align-items-center flex-fill overflow-hidden">
                 <content-area :searchString="searchString" :content="contentToShow" :categories="orcaCategories"
-                  @add="changeItem" @update:navigation="navigationChange"></content-area>
+                  @add="changeItem" @update:navigation="navigationChange" ref="contentarea"></content-area>
               </div>
               <div class="d-flex flex-wrap justify-content-center pe-4 ps-2">
                 <bs-pagination v-if="showPagination" :page="page" :pages="pages"
@@ -84,7 +89,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, inject, computed, provide } from "vue";
+import { ref, reactive, inject, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import modalFullscreen from "@/app/components/modal/modal-fullscreen";
 import bsPagination from "@/app/components/pagination/bs-pagination.vue";
@@ -149,6 +154,13 @@ const selectedItem = reactive({ ...initialSelectedItem });
 const { t } = useI18n();
 const selected = ref([]);
 const showFlyout = ref(false);
+const contentarea = ref(null);
+
+const catchKeyDown = () => {
+  console.log(contentarea.value.contentarea);
+  let ca = contentarea.value.contentarea;
+  //contentarea.value.contentarea.focus();
+}
 
 const select = (item, level) => {
   if (selected?.value?.[level]?.id === item.id && !selected.value[level + 1]) {
@@ -260,20 +272,6 @@ const pages = computed(() => {
 const count = computed(() => {
   return filteredContent.value.length;
 });
-
-const loadAssetByURL = (url) => {
-  let assetBase = props.orcaOptions.asset_base;
-
-  if (assetBase && assetBase !== null && assetBase !== "") {
-    url = `${assetBase}${url}`;
-  }
-
-  return url;
-}
-
-provide('assetPath', {
-  loadAssetByURL
-})
 </script>
 
 <style lang="scss">
@@ -293,6 +291,12 @@ provide('assetPath', {
     background-color: $color-orca-grey;
     text-decoration: none;
     cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0);
+    display: inline-flex;
+
+    &:focus-visible {
+      border: 1px solid $color-orca-red;
+    }
   }
 
   @include media-breakpoint-down(lg) {
@@ -343,6 +347,14 @@ provide('assetPath', {
       border-radius: 0.25rem;
     }
 
+    .sr-only {
+      position:absolute;
+      left:-10000px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
   }
 
   &.flyout-active {

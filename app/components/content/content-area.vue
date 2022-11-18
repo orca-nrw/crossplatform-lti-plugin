@@ -10,6 +10,7 @@
       pe-4
     "
     tabindex="-1"
+    ref="contentarea"
   >
     <contentitem
       v-for="item in content"
@@ -20,12 +21,12 @@
       @update:navigation="navigationChange"
     ></contentitem>
     <template v-if="!hasResults && searchString">
-      <div class="orca-no-content-found">
+      <div class="orca-no-content-found" tabindex="0">
         {{$t(LOCALIZATION_KEYS.SEARCH_NO_CONTENT_FOUND)}} "{{searchString}}".
       </div>
     </template>
     <template v-if="!hasResults && !searchString">
-      <div class="orca-no-content-found">
+      <div class="orca-no-content-found" tabindex="0">
         {{$t(LOCALIZATION_KEYS.NO_SEARCH_NO_CONTENT_FOUND)}}
       </div>
     </template>
@@ -34,7 +35,7 @@
 </template>
 
 <script setup>
-import { reactive, computed } from "vue";
+import { reactive, computed, ref, defineExpose} from "vue";
 import contentitem from "@/app/components/content/content-item.vue";
 
 import LOCALIZATION_KEYS from "@/app/localization/localization-keys";
@@ -55,6 +56,8 @@ const props = defineProps({
   categories: Array,
   searchString: String,
 });
+
+const contentarea = ref(null);
 
 const add = (item) => {
   emit("add", item);
@@ -88,6 +91,10 @@ const noResults = computed(() => {
   } else {
       return props.searchString;
   }
+});
+
+defineExpose({
+  contentarea
 });
 </script>
 

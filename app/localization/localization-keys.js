@@ -1,7 +1,9 @@
 const LOCALIZATION_KEYS = {
   MODAL_FULLSCREEN_DESCRIPTION: "modal_fullscreen_description",
+  MODAL_BUTTON_ARIA_DESCRIPTION: "modal_button_aria_description",
   MODAL_CLOSE: "modal_close",
-  OPEN_CATEGORY_MENU : "open_category_menu",
+  OPEN_CATEGORY_MENU: "open_category_menu",
+  OPEN_CATEGORY_TEXT: "open_category_text",
   ORCA_LOGO_ALT: "orca_logo_alt",
   WEBSITE_URL_ORCA: "website_url_orca",
   ORCA_LINK_TITLE: "orca_link_title",
@@ -21,7 +23,11 @@ const LOCALIZATION_KEYS = {
   PAGINATION_LABEL: "pagination_label",
   PAGINATION_NEXT: "pagination_next",
   PAGINATION_PREV: "pagination_prev", 
-  ERROR:"error", 
+  ERROR:"error",
+  CATEGORY_MENU_CLOSE: "category_menu_close",
+  SELECT_COURSE_ARIA_1: "select_course_aria_1",
+  SELECT_COURSE_ARIA_2: "select_course_aria_2",
+  INPUT_SEARCH_ARIA: "input_search_aria",
 };
 
 export default LOCALIZATION_KEYS;

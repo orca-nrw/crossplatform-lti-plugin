@@ -1,21 +1,21 @@
 <template>
   <nav class="d-flex align-items-center breadcrumb-nav" aria-label="breadcrumb">
-    <div v-if="!disableBreadcrumbText" class="align-items-center me-2 breadcrumb-text">
+    <div v-if="!disableBreadcrumbText" class="align-items-center me-2 breadcrumb-text" tabindex="0">
       {{ $t(breadcrumbText) }}
     </div>
     <ol class="breadcrumb m-0">
       <li v-for="(item, index) in navItems" :key="item?.id" class="breadcrumb-item align-items-center"
         :aria-current="!linkedItem(index) ? 'page' : false">
         <template v-if="linkedItem(index)">
-          <a v-if="item && !fullLinked" @click.prevent="selected(item, index)" role="button" tabindex="0">
+          <a v-if="item && !fullLinked" @click.prevent="selected(item, index)" @keyup.enter="selected(item)" role="button" tabindex="0">
             {{ item.name }}
           </a>
-          <a v-if="item && fullLinked" @click.prevent="navigationChange(item)" role="button" tabindex="0">
+          <a v-if="item && fullLinked" @click.prevent="navigationChange(item)" @keyup.enter="navigationChange(item)" role="button" tabindex="0">
             {{ item.name }}
           </a>
         </template>
         <template v-else>
-          {{ item.name }}
+          <span tabindex="0">{{ item.name }}</span>
         </template>
       </li>
     </ol>

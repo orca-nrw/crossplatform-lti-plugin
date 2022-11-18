@@ -2,16 +2,16 @@
   <div class="orca-lti-content-item ">
     <div class="row flex-row">
       <div class=" flex-column col-12">
-        <h4>{{ item.name }}</h4>
+        <h4 tabindex="0">{{ item.name }}</h4>
         <breadcrumb :disableBreadcrumbText="true" :fullLinked="true" :lastLinked="true" :navItems="navItems"
           @update:navigation="navigationChange"></breadcrumb>
         <div class="slide-up-container d-flex">
           <Transition name="slide-up">
             <div>
-              <div class="line-clamp my-2 text-break" v-show="!detailsActive" :aria-hidden="detailsActive" ref="el">
+              <div class="line-clamp my-2 text-break" v-show="!detailsActive" :aria-hidden="detailsActive" ref="el" tabindex="0">
                 {{ item.description }}
               </div>
-              <div class="text-break" v-show="detailsActive" :aria-hidden="!detailsActive">
+              <div class="text-break" v-show="detailsActive" :aria-hidden="!detailsActive" tabindex="0">
                 {{ item.description }}
               </div>
             </div>
@@ -22,7 +22,7 @@
         <div class="d-sm-flex row flex-row justify-content-between align-items-center">
           <div class="col-12 col-sm-8">
             <a v-if="detailsEnabled" @click.prevent="showDetails" href="#" class="orca-toggle-details" role="button"
-              tabindex="0">
+              tabindex="-1">
               {{
                   detailsActive
                     ? $t(LOCALIZATION_KEYS.COLLAPSE_DESCRIPTION)
@@ -32,7 +32,7 @@
             </a>
           </div>
           <div class="col-12 col-sm-4 d-flex justify-content-end orca-select-button">
-            <button @click.prevent="add()" class="btn btn-secondary" role="button" tabindex="0">
+            <button @click.prevent="add()" class="btn btn-secondary" role="button" tabindex="0" :aria-label="$t(LOCALIZATION_KEYS.SELECT_COURSE_ARIA_1) + item.name + $t(LOCALIZATION_KEYS.SELECT_COURSE_ARIA_2)">
               {{ $t(LOCALIZATION_KEYS.BUTTON_SELECT) }}
             </button>
           </div>

@@ -5,12 +5,13 @@
 
         <div ref="content" class="modal-content shadow rounded">
           <span class="orca-close-modal" @click="$emit('close')"
-            :style="{backgroundImage: `url(${loadAssetByURL(require('@/img/times.png'))})`}"></span>
+            :style="{backgroundImage: `url(${loadAssetByURL(require('@/img/times.png'))})`}" @keyup.enter="$emit('close')" role="button" tabindex="1" :title="$t(LOCALIZATION_KEYS.MODAL_CLOSE)"></span>
           <slot name="content"></slot>
           <div v-if="showControls" class="modal-controls">
             <slot name="controls"></slot>
           </div>
         </div>
+        <span class="sr-only" @click="$emit('close')" @keyup.enter="$emit('close')" role="button" tabindex="0">{{$t(LOCALIZATION_KEYS.MODAL_CLOSE)}}</span>
       </div>
     </div>
   </Transition>
@@ -82,6 +83,14 @@ const showControls = computed(() => {
         transform: translate(0, 0);
       }
     }
+    .sr-only {
+      position:absolute;
+      left:-10000px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+}
   }
 
   display: flex;
