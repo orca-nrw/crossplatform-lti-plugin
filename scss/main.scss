@@ -5,3 +5,8 @@
 @import "_variables";
 @import "_buttons";
 @import "_ilias-overrides";
+
+.text-break {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}

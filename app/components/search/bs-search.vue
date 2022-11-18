@@ -1,24 +1,18 @@
 <template>
   <div class="input-group orca-content-search">
-    <span></span>
+    <span :style="{backgroundImage: `url(${loadAssetByURL(require('@/img/magnifier.png'))})`}"></span>
     <input :placeholder="$t(LOCALIZATION_KEYS.INPUT_SEARCH_PLACEHOLDER)" type="text" autocomplete="off"
       class="form-control orca-search-input" :id="$t(LOCALIZATION_KEYS.INPUT_SEARCH_ID)"
-      :aria-label="$t(LOCALIZATION_KEYS.INPUT_SEARCH_ARIA)" v-model="searchString" @keydown.enter.prevent="jumpToResults" />
+      :aria-label="$t(LOCALIZATION_KEYS.INPUT_SEARCH_PLACEHOLDER)" v-model="searchString" @keypress.enter.prevent />
   </div>
 </template>
 
 <script setup>
-import { computed, inject } from "vue";
+import { computed } from "vue";
 import LOCALIZATION_KEYS from "@/app/localization/localization-keys";
 
 const props = defineProps(["modelValue"]);
 const emit = defineEmits(["update:modelValue"]);
-
-const catchKeyDown = inject('catchKeyDown');
-
-const jumpToResults = (e) => {
-  catchKeyDown();
-};
 
 const searchString = computed({
   get() {
@@ -38,7 +32,6 @@ const searchString = computed({
     display: block;
     width: 20px;
     height: 20px;
-    background-image: url(@/img/magnifier.png);
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;

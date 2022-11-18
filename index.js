@@ -7,6 +7,13 @@ import initLMSData from "@/app/utils/init-lms-data";
 import buildTreeArray from "@/app/utils/build-tree-array";
 
 const init = (tools, categories, translations, options, error) => {
+
+  tools = (!tools)? document.getElementsByName('lti_selector_tools')[0].value : tools;
+  categories = (!categories)? document.getElementsByName('lti_selector_categories')[0].value : categories;
+  translations = (!translations)? document.getElementsByName('lti_selector_translations')[0].value : translations;
+  options = (!options)? document.getElementsByName('lti_selector_options')[0].value : options;
+  error = (!error && document.getElementsByName('lti_selector_error')[0]) ? document.getElementsByName('lti_selector_error')[0].value : error;
+
   const { parsedTools, parsedCategories, parsedTranslations, parsedOptions } =
     initLMSData(tools, categories, translations, options);
   const i18n = initI18n(parsedTranslations);
@@ -21,7 +28,7 @@ const init = (tools, categories, translations, options, error) => {
     orcaCategories: parsedCategories,
     preparedOrcaCategories: preparedCategories,
     orcaOptions: parsedOptions,
-    error:error
+    error: error,
   });
 
   const rootId = `#${parsedOptions.root_id}`;

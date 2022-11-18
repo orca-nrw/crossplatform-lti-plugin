@@ -8,6 +8,9 @@ const updateLMSFormValues = (
   const elURL = document.getElementsByName(selectorURL)[0];
   const elToolname = document.getElementsByName(selectorToolname)[0];
   const key = document.getElementsByName('resourcekey')[0];
+  const instancename = document.getElementById('id_name');
+
+  
 
   if (elId !== undefined && elId !== null) {
     elId.value = selectedItem.toolid;
@@ -19,6 +22,10 @@ const updateLMSFormValues = (
 
   if (elToolname !== undefined && elToolname !== null) {
     elToolname.value = selectedItem.name;
+  }
+
+  if(instancename !== null) {
+    instancename.value = selectedItem.name;
   }
 
   if (key !== undefined && key !== null) {
