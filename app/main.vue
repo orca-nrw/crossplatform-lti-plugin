@@ -89,7 +89,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, inject, computed } from "vue";
+import { ref, reactive, inject, computed, provide } from "vue";
 import { useI18n } from "vue-i18n";
 import modalFullscreen from "@/app/components/modal/modal-fullscreen";
 import bsPagination from "@/app/components/pagination/bs-pagination.vue";
@@ -272,7 +272,18 @@ const pages = computed(() => {
 const count = computed(() => {
   return filteredContent.value.length;
 });
+const loadAssetByURL = (url) => {
+  let assetBase = props.orcaOptions.asset_base;
+  if (assetBase && assetBase !== null && assetBase !== "") {
+    url = `${assetBase}${url}`;
+  }
+  return url;
+}
+provide('assetPath', {
+  loadAssetByURL
+})
 </script>
+
 
 <style lang="scss">
 @import "@/scss/main.scss";
