@@ -40,6 +40,11 @@
                     <h3 tabindex="0">{{ $t(LOCALIZATION_KEYS.CATEGORIES) }}</h3>
                   </div>
                   <nav class="d-flex flex-column flex-fill orca-overflow-accordion mn-3" tabindex="-1">
+                    <ul class="orcalti-list-group" :style="`margin-bottom: 0;`">
+                      <li role="button" @click="selectAllCategories" class="nav-item" :style="`padding-left: 1rem;`">
+                          Alle Kategorien
+                      </li>
+                    </ul>
                     <accordion-navigation :navItems="preparedOrcaCategories" :selected="selected" :level="0"
                       @update:select="select"></accordion-navigation>
                   </nav>
@@ -175,6 +180,12 @@ const select = (item, level) => {
     selected.value.splice(level + 1);
     changeCategory(item);
   }
+};
+
+const selectAllCategories = () => {
+  selected.value[0] = initialCategory;
+  selected.value.splice(1);
+  changeCategory({ ...initialCategory });
 };
 
 const navigationChange = (item, navItems) => {
