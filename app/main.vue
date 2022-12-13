@@ -1,10 +1,10 @@
 <template>
   <div class="orcalti orca-ci">
-    {{ selectedItem.name }}
     <button v-show="!error" @click.prevent="toggleModal" class="btn btn-primary" type="button" :tabindex="showModal ? -1 : 0"
       :aria-label="$t(LOCALIZATION_KEYS.MODAL_BUTTON_ARIA_DESCRIPTION)">
       {{ $t(LOCALIZATION_KEYS.BUTTON_SELECT) }}
     </button>
+    {{ selectedItem.name }}
     <div v-show="error">
       {{ $t(LOCALIZATION_KEYS.ERROR) }} ( {{ error }} )
     </div>
