@@ -80,7 +80,7 @@ const breadcrumbText = computed(() => {
 <style lang="scss">
 .breadcrumb-nav {
   line-height: 1.31;
-
+  float: none!important;
   @include media-breakpoint-down(sm) {
     flex-wrap: wrap;
 
