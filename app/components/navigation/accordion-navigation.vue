@@ -121,6 +121,10 @@ const navItemLevelStyle = computed((item) => {
     padding-bottom: 0.8rem;
     border: 1px solid rgba(255, 255, 255, 0);
 
+    .position-relative {
+      word-break: break-word;
+    }
+
     &[role="button"] {
       &:focus {
         box-shadow: none;
