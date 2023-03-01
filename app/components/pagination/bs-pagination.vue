@@ -114,7 +114,6 @@ const shownPagination = computed(() => {
     while (remainingPositions > 0) {
       if (subIndex) {
         let newPageIndex = props.page - tempIndex;
-
         if (newPageIndex > 1) {
           paginationArray.push(newPageIndex);
           remainingPositions--;
@@ -122,7 +121,6 @@ const shownPagination = computed(() => {
         subIndex = false;
       } else {
         let newPageIndex = props.page + tempIndex;
-
         if (newPageIndex < props.pages) {
           paginationArray.push(newPageIndex);
           remainingPositions--;
@@ -136,12 +134,13 @@ const shownPagination = computed(() => {
       }
     }
   }
-
   let sortedPagination = paginationArray.sort(function (a, b) {
     return a - b;
   });
-
-
+  
+  if(sortedPagination.length > 4 && (sortedPagination[4] - sortedPagination[3] > 1)){
+    sortedPagination.splice(4, 0, null);
+  }
   return sortedPagination;
 });
 
