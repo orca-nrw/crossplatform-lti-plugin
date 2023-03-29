@@ -68,14 +68,14 @@ const props = defineProps({
 
 const changePage = (val) => {
   emit("update:change", val);
-  const elements = document.getElementsByClassName('orca-lti-content-item');
+  const elements = document.getElementsByClassName("orca-lti-content-item");
   var eltewt;
   if (elements && elements != null && elements != undefined) {
     eltewt = elements[0];
   }
-      if (eltewt) {
-        eltewt.scrollIntoView();
-      }
+  if (eltewt) {
+    eltewt.scrollIntoView();
+  }
 };
 
 const getPageItemClass = (index) => {
@@ -137,8 +137,11 @@ const shownPagination = computed(() => {
   let sortedPagination = paginationArray.sort(function (a, b) {
     return a - b;
   });
-  
-  if(sortedPagination.length > 4 && (sortedPagination[4] - sortedPagination[3] > 1)){
+
+  if (
+    sortedPagination.length > 4 &&
+    sortedPagination[4] - sortedPagination[3] > 1
+  ) {
     sortedPagination.splice(4, 0, null);
   }
   return sortedPagination;
@@ -152,6 +155,44 @@ const maximumPossiblePages = computed(() => {
 </script>
 
 <style lang="scss">
+@media only screen and (max-height: 300px) and (max-width: 400px) {
+  .navigation {
+    font-size: 6px;
+  }
+  .orca-search-breadcrumbs {
+    margin: 0px !important;
+    font-size: 6px !important;
+  }
+  form {
+    margin-bottom: 0px !important;
+  }
+  .orca-lti-content-item h4 {
+    font-size: 8px !important;
+  }
+  .breadcrumb-nav .breadcrumb .breadcrumb-item a {
+    font-size: 6px;
+  }
+  .orca-nav-bar h3{
+    font-size: 8px;
+  }
+  #incremental_search_courses {
+    font-size: 6px;
+  }
+  .line-clamp.my-2.text-break {
+    font-size: 6px;
+  }
+  .orca-toggle-details {
+    font-size: 6px;
+  }
+  .orca-select-button .btn {
+    font-size: 6px !important;
+    width: 100%;
+    height: inherit !important;
+  }
+  .breadcrumb-item + .breadcrumb-item:before {
+    font-size: 6px;
+  }
+}
 .pagination {
   @include media-breakpoint-down(md) {
     flex-wrap: wrap;
