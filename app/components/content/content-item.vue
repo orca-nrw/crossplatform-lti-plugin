@@ -189,6 +189,17 @@ const detailsEnabled = computed(() => {
   }
 }
 
+@media only screen and (max-height: 300px) and (max-width: 400px) {
+    .orca-search-breadcrumbs{
+   margin: 0px!important;
+   font-size: 6px!important;
+  }
+ 
+  .orca-nav-bar .orca-nav-bar-menu{
+   font-size: 6px!important;
+  }
+ }
+
 .orca-select-button {
   padding: 1rem 0;
 
