@@ -9,8 +9,8 @@ const updateLMSFormValues = (
   const elToolname = document.getElementsByName(selectorToolname)[0];
   const key = document.getElementsByName('resourcekey')[0];
   const instancename = document.getElementById('id_name');
-
-  
+  const ltiversion = document.getElementsByName('ltiversion')[0];
+  const instructorcustomparameters = document.getElementsByName('instructorcustomparameters')[0];
 
   if (elId !== undefined && elId !== null) {
     elId.value = selectedItem.toolid;
@@ -30,6 +30,14 @@ const updateLMSFormValues = (
 
   if (key !== undefined && key !== null) {
     key.value = selectedItem.key;
+  }
+
+  if (ltiversion !== undefined && ltiversion !== null) {
+    ltiversion.value = selectedItem.ltiversion;
+  }
+
+  if (instructorcustomparameters !== undefined && instructorcustomparameters !== null) {
+    instructorcustomparameters.value = selectedItem.customparameters;
   }
 };
 

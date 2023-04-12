@@ -21,7 +21,7 @@
       <div class="col-12">
         <div class="d-sm-flex row flex-row justify-content-between align-items-center">
           <div class="col-12 col-sm-8">
-            <a v-if="detailsEnabled" @click.prevent="showDetails" href="#" class="orca-toggle-details" role="button"
+            <a v-if="detailsEnabled" @click.prevent="showDetails" href="#" class="orca-toggle-details mr-3" role="button"
               tabindex="-1">
               {{
                   detailsActive
@@ -30,6 +30,7 @@
               }}
               <div v-html="getSVG" class="orca-details-arrow"></div>
             </a>
+            <span v-if="item.ltiversion" class="orca-lti-version">{{ item.ltiversion === 'LTI-1p3' ? 'LTI 1.3' : 'LTI 1.1'}}</span>
           </div>
           <div class="col-12 col-sm-4 d-flex justify-content-end orca-select-button">
             <button @click.prevent="add()" class="btn btn-secondary" role="button" tabindex="0" :aria-label="$t(LOCALIZATION_KEYS.SELECT_COURSE_ARIA_1) + item.name + $t(LOCALIZATION_KEYS.SELECT_COURSE_ARIA_2)">
