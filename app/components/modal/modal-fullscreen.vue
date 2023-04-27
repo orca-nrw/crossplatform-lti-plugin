@@ -99,7 +99,7 @@ const showControls = computed(() => {
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 996;
+  z-index: 9999;
   flex-direction: column;
   justify-content: center;
   align-items: center;
