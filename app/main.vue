@@ -41,7 +41,7 @@
                   </div>
                   <nav class="d-flex flex-column flex-fill orca-overflow-accordion mn-3" tabindex="-1">
                     <ul class="orcalti-list-group" :style="`margin-bottom: 0;`">
-                      <li role="button" @click="selectAllCategories" class="nav-item" :style="`padding-left: 1rem;`">
+                      <li role="button" tabindex="0" ref="allcategoriesbtn" @click="selectAllCategories" :class="allcategoriesselected ? 'nav-item active' : 'nav-item'" :style="`padding-left: 1rem;`">
                           Alle Kategorien
                       </li>
                     </ul>
@@ -160,6 +160,7 @@ const { t } = useI18n();
 const selected = ref([]);
 const showFlyout = ref(false);
 const contentarea = ref(null);
+const allcategoriesselected = ref(true);
 
 const catchKeyDown = () => {
   console.log(contentarea.value.contentarea);
@@ -180,12 +181,16 @@ const select = (item, level) => {
     selected.value.splice(level + 1);
     changeCategory(item);
   }
+  allcategoriesselected.value = false;
 };
 
 const selectAllCategories = () => {
+
   selected.value[0] = initialCategory;
   selected.value.splice(1);
   changeCategory({ ...initialCategory });
+
+  allcategoriesselected.value = true;
 };
 
 const navigationChange = (item, navItems) => {
