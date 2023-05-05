@@ -190,7 +190,7 @@ const detailsEnabled = computed(() => {
   }
 }
 
-@media only screen and (max-height: 300px) and (max-width: 400px) {
+@media only screen and (max-height: 300px) and (max-width: 500px) {
     .orca-search-breadcrumbs{
    margin: 0px!important;
    font-size: 6px!important;

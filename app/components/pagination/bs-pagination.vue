@@ -155,7 +155,7 @@ const maximumPossiblePages = computed(() => {
 </script>
 
 <style lang="scss">
-@media only screen and (max-height: 300px) and (max-width: 400px) {
+@media only screen and (max-height: 300px) and (max-width: 500px) {
   .navigation {
     font-size: 6px;
   }

@@ -16,7 +16,7 @@
               <div class="orca-nav-bar d-flex flex-column flex-fill mh-100" :class="{ 'flyout-active': showFlyout }">
                 <a class="d-lg-none orca-nav-bar-menu mt-4" @click.prevent="showFlyout = !showFlyout" @keyup.enter="showFlyout = !showFlyout"
                   type="button" :aria-label="$t(LOCALIZATION_KEYS.OPEN_CATEGORY_MENU)" :tabindex="showFlyout ? -1 : 0">
-                  <div class="d-flex flex-column align-items-center p-2">
+                  <div class="d-flex phone-menu flex-column align-items-center p-2">
                     <img class="img-fluid w-50"
                       :src="loadAssetByURL(require('@/img/navigation-menu-horizontal.png'))" />
                     {{ $t(LOCALIZATION_KEYS.OPEN_CATEGORY_TEXT) }}
