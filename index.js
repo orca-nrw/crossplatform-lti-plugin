@@ -33,6 +33,15 @@ const init = (tools, categories, translations, options, error) => {
 
   const rootId = `#${parsedOptions.root_id}`;
 
+  // Register a global custom directive called `v-focus`
+  app.directive('focus', {
+    // When the bound element is mounted into the DOM...
+    mounted(el) {
+      // Focus the element
+      el.focus()
+    }
+  });
+
   app.use(i18n);
   app.mount(rootId);
 };

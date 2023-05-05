@@ -41,7 +41,7 @@
                   </div>
                   <nav class="d-flex flex-column flex-fill orca-overflow-accordion mn-3" tabindex="-1">
                     <ul class="orcalti-list-group" :style="`margin-bottom: 0;`">
-                      <li role="button" tabindex="0" ref="allcategoriesbtn" @click="selectAllCategories" :class="allcategoriesselected ? 'nav-item active' : 'nav-item'" :style="`padding-left: 1rem;`">
+                      <li role="button" tabindex="0" v-focus ref="allcategoriesbtn" @click="selectAllCategories" :class="allcategoriesselected ? 'nav-item active' : 'nav-item'" :style="`padding-left: 1rem;`">
                           Alle Kategorien
                       </li>
                     </ul>

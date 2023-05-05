@@ -40,6 +40,41 @@ onUnmounted(() => {
 const handleKeyInput = (e) => {
   let keyCode = e.keyCode;
 
+  const arrowKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
+  if (arrowKeys.includes(event.key)) {
+    event.preventDefault();
+    const focusableElements = Array.from(
+      event.currentTarget.querySelectorAll('button, [tabindex]:not([tabindex="-1"]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), li.focusable')
+    );
+    const currentIndex = focusableElements.indexOf(document.activeElement);
+
+    let nextIndex = -1;
+    if (event.key === 'ArrowUp') {
+
+      nextIndex = currentIndex - 1;
+
+    } else if (event.key === 'ArrowLeft') {
+        nextIndex = currentIndex - 1;
+        const currentElement = focusableElements[currentIndex];
+        currentElement.click();
+        return;
+
+    } else if (event.key === 'ArrowRight') {
+
+      nextIndex = currentIndex + 1;
+      const currentElement = focusableElements[currentIndex];
+      currentElement.click();
+      return;
+
+    } else if (event.key === 'ArrowDown') {
+      nextIndex = currentIndex + 1;
+    }
+
+    if (nextIndex >= 0 && nextIndex < focusableElements.length) {
+      focusableElements[nextIndex].focus();
+    }
+  }
+
   if (keyCode === 27) {
     close();
   }
