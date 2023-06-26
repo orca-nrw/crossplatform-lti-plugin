@@ -1,6 +1,6 @@
 {
   "name": "orcalti",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "NPM dependencies for the ORCA.NRW-LTI ILIAS/Moodle plugin",
   "main": "index.js",
   "scripts": {
